@@ -12,6 +12,10 @@
 .right{
     width:75%;
 }
+.same{
+    width:200px;
+    float:left;
+}
 .sel{
     font-weight: bold;
     font-size:30;
