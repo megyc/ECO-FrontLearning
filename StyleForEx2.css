@@ -1,0 +1,31 @@
+ .new1{
+     text-align: center;
+     color:green;
+ }
+.container {
+    column-count: 2;
+  }
+.left{
+    width:25%;
+    float: left;
+}
+.right{
+    width:75%;
+}
+.sel{
+    font-weight: bold;
+    font-size:30;
+    color:green;
+}
+.aftersel{
+    font-weight: bold;
+    font-size:30;
+    color:red;
+}
+.bigbox{
+    width:100%;
+    border-bottom: 1px solid;
+}
+.text{
+    font-weight: bold;
+}
