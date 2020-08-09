@@ -18,7 +18,7 @@
 }
 .sel{
     font-weight: bold;
-    font-size:30;
+    font-size:25;
     color:green;
 }
 .aftersel{
@@ -30,6 +30,32 @@
     width:100%;
     border-bottom: 1px solid;
 }
+.bigbox2{
+    width:100%;
+}
 .text{
     font-weight: bold;
+}
+.text2{
+    color:green;
+    font-weight: bold;
+}
+.textlen{
+    width:350px;
+}
+.bigtext{
+    width:300px;
+    height:150px;
+}
+.bigtext2{
+    width:500px;
+    height:150px;
+}
+.buttontype{
+    background-color:green;
+    color:white;
+    width:80px;
+    height:40px;
+    border-radius:8px;
+    border:1px solid white;
 }
