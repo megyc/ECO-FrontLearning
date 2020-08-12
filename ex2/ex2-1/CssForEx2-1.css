@@ -1,0 +1,157 @@
+header{
+    background-color: black;
+    display:flex;
+    padding-top: 2em;
+    padding-bottom: 1.5em;
+}
+.titleclass{
+    color:white;
+    flex:1;
+}
+.titlespan1{
+    float:left;
+    margin-left: 2em;
+}
+.titlespan2{
+    margin-left: 5em;
+}
+.titlespan3{
+    float:right;
+    margin-right: 2em;
+}
+.sediv1{
+    color:red;
+    background-color:white;
+    border:white solid  2em;
+    text-align: center;
+    flex:1;
+}
+.sediv2{
+    color:white;
+    background-color:orange;
+    border:orange solid 2em;
+    text-align: center;
+    flex:1;
+}
+.sediv3{
+    color:white;
+    background-color:green;
+    border:green solid 2em;
+    text-align: center;
+    flex:1;
+}
+.thidiv1{
+    width:67%;
+    background-color: #F2F2F2;
+    border:#F2F2F2 solid 1em;
+}
+.thidiv2{
+    width:17%;
+    background-color: #E6E6E6;
+    border:#E6E6E6 solid 1em;
+    margin-top: 1mm;
+    margin-right: 1mm;
+    margin-bottom: 1mm;
+    color:white;
+}
+.thidiv3{
+    width:17%;
+    margin-top: 1mm;
+    background-color: #E6E6E6;
+    border:#E6E6E6 solid 1em;
+    margin-bottom: 1mm;
+    color:white;
+}
+.for1{
+    width: 20%;
+}
+.for2{
+    width:80%;
+}
+.ul1{
+    list-style-type:none;
+    margin: 0;
+    padding:0;
+}
+.li1{
+    margin:0;
+    background-color:#F6CED8;
+    color:white;
+    border:#F6CED8 solid 2em;
+    text-align: center;
+}
+.li2{
+    margin:0;
+    background-color:white;
+    color:black;
+    border:white solid 2em;
+    text-align: center;
+}
+.li3{
+    margin:0;
+    background-color:#58FA58;
+    color:white;
+    border:#58FA58 solid 2em;
+    text-align: center;
+}
+.li4{
+    margin:0;
+    background-color:#848484;
+    color:white;
+    border:#848484 solid 2em;
+    text-align: center;
+}
+.li5{
+    margin:0;
+    background-color:#DBA901;
+    color:white;
+    border:#DBA901 solid 2em;
+    text-align: center;
+}
+.li6{
+    margin:0;
+    background-color:#F78181;
+    color:white;
+    border:#F78181 solid 2em;
+    text-align: center;
+}
+.li7{
+    margin:0;
+    background-color:#58ACFA;
+    color:white;
+    border:#58ACFA solid 2em;
+    text-align: center;
+}
+.li8{
+    margin:0;
+    background-color:#04B4AE;
+    color:white;
+    border:#04B4AE solid 2em;
+    text-align: center;
+}
+.ul2{
+    list-style-type:none;
+    margin: 0;
+    padding:0;
+}
+.footdiv1{
+    width: 60%;
+    color:white;
+    background-color:#2E2E2E;
+    border:#2E2E2E solid 2em;
+    text-align: center;
+}
+.footdiv2{
+    width:40%;
+    color:white;
+    background-color:gray;
+    border:gray solid 2em;
+    text-align: center;
+}
+.secondrol,
+.thirdrol,
+.forol,
+footer
+{
+    display: flex;
+}
