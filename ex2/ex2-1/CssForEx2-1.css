@@ -81,7 +81,7 @@ header{
     text-align: center;
 }
 .li2{
-    margin:0;
+    margin:0em;
     background-color:white;
     color:black;
     border:white solid 2em;
@@ -129,10 +129,52 @@ header{
     border:#04B4AE solid 2em;
     text-align: center;
 }
+img{
+    height: 100%;
+    width: 100%;
+}
 .ul2{
     list-style-type:none;
-    margin: 0;
+    margin: 1.5em;
     padding:0;
+}
+.img{
+    object-fit: contain;
+}
+.img1{
+    height: 10em;
+    width: 10em;
+}
+.img4{
+    height: 3em;
+    width: 3em;
+}
+.img5{
+    margin-left: 3em;
+    height: 2em;
+    width: 2em;
+}
+.datadiv{
+    flex:1;
+}
+.data1{
+    font-weight: bold;
+    font-size: larger;
+}
+.data2{
+    display: flex;
+}
+.data3{
+    margin-top: 1em;
+    color: red;
+    font-size: large;
+}
+.data4{
+    color:red;
+    font-size: large
+}
+.data5{
+    display: flex;
 }
 .footdiv1{
     width: 60%;
@@ -148,6 +190,7 @@ header{
     border:gray solid 2em;
     text-align: center;
 }
+.uldiv,
 .secondrol,
 .thirdrol,
 .forol,
