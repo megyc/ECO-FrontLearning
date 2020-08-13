@@ -1,0 +1,110 @@
+header{
+    background-color: black;
+    display:flex;
+    padding-top: 2em;
+    padding-bottom: 0.1em;
+}
+.headdiv1{
+    margin-left: 2em;
+    text-align: left;
+    color:white;
+    flex:1;
+    font-size: large;
+}
+.headdiv2{
+    text-align: center;
+    color:white;
+    flex:1;
+}
+.headdiv3{
+    margin-right:2em ;
+    text-align: right;
+    color:white;
+    flex:1;
+}
+.selection{
+    margin-top: 1em;
+    margin-bottom: 0;
+    display:flex;
+    border-bottom:solid rgb(243,243,243);
+}
+.sel{
+    flex:1;
+    text-align: center;
+    font-size: larger;
+    margin-bottom: 1em;
+}
+.tablelist{
+    display: flex;
+    flex-wrap: wrap;
+}
+.table_unused{
+    display:flex;
+    flex-direction: column;
+    width:30%;
+    background-color: rgb(242,251,244);
+    text-align: center;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+    margin-bottom: 0.2em;
+    border-right:3px solid rgb(247,247,247);
+    border-left:3px solid rgb(247,247,247);
+    border-bottom: 4px solid rgb(237,237,237);
+}
+.table_used{
+    width:30%;
+    flex-direction: column;
+    background-color: rgb(255,242,241);
+    display: flex;
+    text-align: center;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+    margin-bottom: 0.2em;
+    border-right:3px solid rgb(247,247,247);
+    border-left:3px solid rgb(247,247,247);
+    border-bottom: 4px solid rgb(237,237,237);
+}
+.tabletext1{
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    font-size: large;
+}
+.tabletext2{
+    height: 2.5em;
+    width: 6em;
+    border:1px solid rgb(189,206,196);
+    border-radius: 15em;
+    margin-left: 23%;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    color:rgb(87,123,96)
+}
+.tabletext3{
+    height: 2.5em;
+    width: 6em;
+    border:1px solid rgb(186,166,167);
+    border-radius: 15em;
+    margin-left: 23%;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    color:rgb(219,80,102)
+}
+.text{
+    margin-top: 0.5em;
+}
+.foot{
+    position:fixed;
+    bottom:0;
+}
+img{
+    height: 100%;
+    width: 100%;
+}
+.pic{
+    margin-left: 30em;
+    margin-bottom: 4em;
+    height:4.5em;
+    width:4.5em;
+    object-fit: contain;
+}
