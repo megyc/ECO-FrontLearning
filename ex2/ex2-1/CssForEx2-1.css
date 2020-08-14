@@ -1,4 +1,4 @@
-header{
+.headerclass{
     background-color: black;
     display:flex;
     padding-top: 2em;
@@ -19,27 +19,31 @@ header{
     float:right;
     margin-right: 2em;
 }
+
+
+.sediv1,
+.sediv2,
+.sediv3{
+    text-align: center;
+    flex:1;
+}
 .sediv1{
     color:red;
     background-color:white;
     border:white solid  2em;
-    text-align: center;
-    flex:1;
 }
 .sediv2{
     color:white;
     background-color:orange;
-    border:orange solid 2em;
-    text-align: center;
-    flex:1;
+    border:orange solid 2em
 }
 .sediv3{
     color:white;
     background-color:green;
     border:green solid 2em;
-    text-align: center;
-    flex:1;
 }
+
+
 .thidiv1{
     width:67%;
     background-color: #F2F2F2;
@@ -73,62 +77,60 @@ header{
     margin: 0;
     padding:0;
 }
-.li1{
+
+.li1,
+.li2,
+.li3,
+.li4,
+.li5,
+.li6,
+.li7,
+.li8{
     margin:0;
+    text-align: center;
+}
+.li1{
     background-color:#F6CED8;
     color:white;
     border:#F6CED8 solid 2em;
-    text-align: center;
 }
 .li2{
-    margin:0em;
     background-color:white;
     color:black;
     border:white solid 2em;
-    text-align: center;
 }
 .li3{
-    margin:0;
     background-color:#58FA58;
     color:white;
     border:#58FA58 solid 2em;
-    text-align: center;
 }
 .li4{
-    margin:0;
     background-color:#848484;
     color:white;
     border:#848484 solid 2em;
-    text-align: center;
 }
 .li5{
-    margin:0;
     background-color:#DBA901;
     color:white;
     border:#DBA901 solid 2em;
-    text-align: center;
 }
 .li6{
-    margin:0;
     background-color:#F78181;
     color:white;
     border:#F78181 solid 2em;
-    text-align: center;
 }
 .li7{
-    margin:0;
     background-color:#58ACFA;
     color:white;
     border:#58ACFA solid 2em;
-    text-align: center;
 }
 .li8{
-    margin:0;
     background-color:#04B4AE;
     color:white;
     border:#04B4AE solid 2em;
-    text-align: center;
 }
+
+
 img{
     height: 100%;
     width: 100%;
@@ -197,4 +199,14 @@ img{
 footer
 {
     display: flex;
+}
+.link1,
+.link2{
+    text-decoration: none;
+}
+.link1{
+    color:red;
+}
+.link2{
+    color:white;
 }
