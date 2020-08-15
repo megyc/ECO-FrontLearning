@@ -37,12 +37,13 @@ header{
 .tablelist{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 .table_unused{
     display:flex;
     flex-direction: column;
     align-items: center;
-    width:30%;
+    width:32%;
     background-color: rgb(242,251,244);
     text-align: center;
     margin-left: 0.3em;
@@ -53,7 +54,7 @@ header{
     border-bottom: 4px solid rgb(237,237,237);
 }
 .table_used{
-    width:30%;
+    width:32%;
     flex-direction: column;
     background-color: rgb(255,242,241);
     align-items: center;
