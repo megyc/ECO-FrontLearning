@@ -3,18 +3,24 @@
     border-bottom: rgb(220,220,220) solid 1px;
 }
 
+.delete-button-style,
 .button-style{
     background-color: rgb(34,133,208);
     color:white;
 }
 
+.lable-div{
+    display: flex;
+    justify-content: space-around;
+}
+
+.state-style,
 .finished-lable,
 .unfinished-lable{
     font-weight: bold;
-    display:flex;
 }
 
-.finisher-lable{
+.finished-lable{
     text-decoration:line-through;
 }
 
