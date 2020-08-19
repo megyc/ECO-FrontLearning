@@ -2,7 +2,7 @@ const add_button=document.getElementById("add-button");
 
 add_button.onclick=lable_add;
 let lables=[];
-let lable_num=-1;
+let lable_num=-1;//存放lable数目，方便进行修改和查询
 
 //标签的构造函数
 function lable(name){
@@ -18,21 +18,38 @@ function lable_add(){
     print(lables.length-1);
 }
 
-
 function print(num){
+
+    /*创建部分*/
     let lable_container=document.getElementById("lables");//获取lable容器
     let lable_div=document.createElement("div");//存放一条lable
-    lable_div.id="lable_div"+lable_num;
+    lable_div.id="lable_div"+num;//给该lable唯一的编号
     let lable_name=document.createElement("div");//存放单个lable的名字
     let lable_state=document.createElement("div");//存放单个lable的状态
     let delete_button=document.createElement("button")//存放删除按钮
-    delete_button.id="delete_button"+lable_num;
+
+    //添加每一个lable内button的监听
+    delete_button.onclick=lable_delete;
+    //添加名字的监听
+    lable_name.onclick=state_change;
+
+
+    /*
+    这一条貌似没有用
+    delete_button.id="delete_button"+lable_num;//给该按钮一个唯一的编号
+    */
+
     lable_container.appendChild(lable_div);//向lable容器里添加一条lable
     lable_div.className="lable-div";//采用flex布局
+
     //向div里添加三个容器
     lable_div.appendChild(lable_name);
     lable_div.appendChild(lable_state);
     lable_div.appendChild(delete_button);
+
+
+
+    /*内容设置部分 */
     //设置容器的内容
     lable_name.innerHTML=lables[num].name;
     lable_state.className="state-style";
@@ -46,16 +63,47 @@ function print(num){
         lable_name.className="unfinished-lable";//未完成的lable
         lable_state.innerHTML="未完成";
     }
-    //添加每一个lable内button的监听
-    delete_button.onclick=lable_delete;
 }
 
 function lable_delete(e){
-    //找到事件源
+    //找到事件源的lable
     let lable=e.target.parentNode;
-    //事件源的父节点
-    let parent=lable.parentNode;
-    parent.removeChild(lable);
     //获取该标签的id并从lables内移除
     lables.splice(lable.id[lable.id.length-1],1);
+    lable_num--;//减少lable数目
+
+    //为保持lable-div与其在lables中的一致性，只好全部重新打印
+    //删除整个lablescontainer
+    let parent=lable.parentNode.parentNode;
+    parent.removeChild(lable.parentNode);
+    //重建lablescontainer
+    let big_div=document.getElementById("big-container");
+    let new_container=document.createElement("div");
+    big_div.appendChild(new_container);
+    new_container.className="lables-container";
+    new_container.id="lables";
+    for(let i=0;i<lables.length;i++){
+        print(i);
+    }
+}
+
+function state_change(e){
+    //寻找事件源
+    let text=e.target.parentNode;
+    //修改lables内的状态
+    lables[(text.id[text.id.length-1])].state=!lables[(text.id[text.id.length-1])].state;
+    //重新打印
+    //为保持lable-div与其在lables中的一致性，只好全部重新打印
+    //删除整个lablescontainer
+    let parent=text.parentNode.parentNode;
+    parent.removeChild(text.parentNode);
+    //重建lablescontainer
+    let big_div=document.getElementById("big-container");
+    let new_container=document.createElement("div");
+    big_div.appendChild(new_container);
+    new_container.className="lables-container";
+    new_container.id="lables";
+    for(let i=0;i<lables.length;i++){
+        print(i);
+    }
 }

@@ -24,3 +24,8 @@
     text-decoration:line-through;
 }
 
+.lables-container{
+    display: flex;
+    flex-direction: column;
+}
+
