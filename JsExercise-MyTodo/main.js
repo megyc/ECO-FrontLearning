@@ -1,8 +1,16 @@
 const add_button=document.getElementById("add-button");
+const all_button=document.getElementById("all-button");
+const unfinished_button=document.getElementById("unfinished-button");
+const finished_button=document.getElementById("finished-button");
 
 add_button.onclick=lable_add;
+all_button.onclick=show_all;
+unfinished_button.onclick=show_unfinished;
+finished_button.onclick=show_finished;
+
 let lables=[];
 let lable_num=-1;//存放lable数目，方便进行修改和查询
+let stack=[];//用于辅助改变状态
 
 //标签的构造函数
 function lable(name){
@@ -15,6 +23,7 @@ function lable(name){
 function lable_add(){
     let new_lable=new lable(document.getElementById("input").value);
     lables.push(new_lable);
+    stack.push(lables.length-1);
     print(lables.length-1);
 }
 
@@ -69,9 +78,10 @@ function lable_delete(e){
     //找到事件源的lable
     let lable=e.target.parentNode;
     //获取该标签的id并从lables内移除
-    lables.splice(lable.id[lable.id.length-1],1);
+    let number=lable.id.replace("lable_div","");
+    lables.splice(number,1);
     lable_num--;//减少lable数目
-
+    stack.splice(number,1);
     //为保持lable-div与其在lables中的一致性，只好全部重新打印
     //删除整个lablescontainer
     let parent=lable.parentNode.parentNode;
@@ -82,16 +92,27 @@ function lable_delete(e){
     big_div.appendChild(new_container);
     new_container.className="lables-container";
     new_container.id="lables";
+    for(let i=k;i<stack.length;i++){
+        stack[i]--;
+    }
     for(let i=0;i<lables.length;i++){
-        print(i);
+        let flag=false;
+        for(let j=0;j<stack.length;j++){
+            if(stack[j]===i)
+            flag=true;
+        }
+        if(flag){
+            print(i);
+        }
     }
 }
 
 function state_change(e){
     //寻找事件源
     let text=e.target.parentNode;
+    let num=text.id.replace("lable_div","");
     //修改lables内的状态
-    lables[(text.id[text.id.length-1])].state=!lables[(text.id[text.id.length-1])].state;
+    lables[num].state=!lables[num].state;
     //重新打印
     //为保持lable-div与其在lables中的一致性，只好全部重新打印
     //删除整个lablescontainer
@@ -104,6 +125,75 @@ function state_change(e){
     new_container.className="lables-container";
     new_container.id="lables";
     for(let i=0;i<lables.length;i++){
+        let flag=false;
+        for(let j=0;j<stack.length;j++){
+            if(stack[j]===i)
+            flag=true;
+        }
+        if(flag){
+            print(i);
+        }
+    }
+}
+function show_all(){
+    stack.length=0;
+    //全部删除，全部重新打印
+    let child=document.getElementById("lables");
+    let parent=document.getElementById("big-container");
+    parent.removeChild(child);
+    //重建lablescontainer
+    let big_div=document.getElementById("big-container");
+    let new_container=document.createElement("div");
+    big_div.appendChild(new_container);
+    new_container.className="lables-container";
+    new_container.id="lables";
+    for(let i=0;i<lables.length;i++){
+        stack.push(i);
         print(i);
     }
+}
+
+function show_finished(){
+    stack.length=0;
+    //全部删除，全部重新打印
+    let child=document.getElementById("lables");
+    let parent=document.getElementById("big-container");
+    parent.removeChild(child);
+    //重建lablescontainer
+    let big_div=document.getElementById("big-container");
+    let new_container=document.createElement("div");
+    big_div.appendChild(new_container);
+    new_container.className="lables-container";
+    new_container.id="lables";
+    //筛选
+    let i=0;
+    do{
+        if(lables[i].state){
+            print(i);
+            stack.push(i);
+        }
+        i++;
+    }while(i<lables.length)
+}
+function show_unfinished(){
+    stack.length=0;
+    //全部删除，全部重新打印
+    let child=document.getElementById("lables");
+    let parent=document.getElementById("big-container");
+    parent.removeChild(child);
+    //重建lablescontainer
+    let big_div=document.getElementById("big-container");
+    let new_container=document.createElement("div");
+    big_div.appendChild(new_container);
+    new_container.className="lables-container";
+    new_container.id="lables";
+    //筛选
+    let i=0;
+    do{
+        if(!lables[i].state){
+            print(i);
+            stack.push(i);
+        }
+        i++;
+    }while(i<lables.length)
 }
