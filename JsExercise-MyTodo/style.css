@@ -1,0 +1,20 @@
+.title{
+    padding-bottom: 15px;
+    border-bottom: rgb(220,220,220) solid 1px;
+}
+
+.button-style{
+    background-color: rgb(34,133,208);
+    color:white;
+}
+
+.finished-lable,
+.unfinished-lable{
+    font-weight: bold;
+    display:flex;
+}
+
+.finisher-lable{
+    text-decoration:line-through;
+}
+
