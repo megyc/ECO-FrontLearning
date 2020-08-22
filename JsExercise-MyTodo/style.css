@@ -5,11 +5,18 @@
 
 .delete-button-style,
 .button-style{
+    border-color: rgb(34,133,208);
+    border-radius: 3px;
     background-color: rgb(34,133,208);
     color:white;
+    margin:2px;
+    padding-left: 15px;
+    padding-right: 15px;
+
 }
 
 .lable-div{
+    margin:20px;
     display: flex;
     justify-content: space-around;
 }
@@ -20,6 +27,8 @@
     font-weight: bold;
 }
 
+
+
 .finished-lable{
     text-decoration:line-through;
 }
@@ -27,5 +36,14 @@
 .lables-container{
     display: flex;
     flex-direction: column;
+}
+
+.text,
+.delete-button-style,
+.button-style{
+    height:30px;
+}
+.sub-tittle{
+    margin: 20px;
 }
 
