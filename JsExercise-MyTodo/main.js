@@ -20,10 +20,15 @@ function lable(name){
 }
 
 function lable_add(){
-    let new_lable=new lable(document.getElementById("input").value);
-    lables.push(new_lable);
-    print(lables.length-1);
-    stack.push(lables.length-1);
+    if(document.getElementById("input").value!==""){
+        let new_lable=new lable(document.getElementById("input").value);
+        lables.push(new_lable);
+        print(lables.length-1);
+        stack.push(lables.length-1);
+
+    }
+    else
+        alert("请输入内容");
 }
 
 function clear(){
