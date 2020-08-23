@@ -5,6 +5,7 @@ login_button.onclick=login;
 let User="admin"
 let PassWord="123"
 
+
 function login(){
     let number=document.getElementById("input1").value;
     let password=document.getElementById("input2").value;
