@@ -1,10 +1,16 @@
 const login_button=document.getElementById("login-button");
+const jps_button=document.getElementById("jps");
 
 login_button.onclick=login;
+jps_button.onclick=jump_to_chs;
 
 let User="admin"
 let PassWord="123"
 
+function jump_to_chs(){
+    console.info("test");
+    window.location="index_jps.html";
+}
 
 function login(){
     let number=document.getElementById("input1").value;
