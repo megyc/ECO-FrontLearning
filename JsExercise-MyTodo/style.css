@@ -15,25 +15,25 @@
 
 }
 
-.lable-div{
+.item-div{
     margin:20px;
     display: flex;
     justify-content: space-around;
 }
 
 .state-style,
-.finished-lable,
-.unfinished-lable{
+.finished-item,
+.unfinished-item{
     font-weight: bold;
 }
 
 
 
-.finished-lable{
+.finished-item{
     text-decoration:line-through;
 }
 
-.lables-container{
+.item-container{
     display: flex;
     flex-direction: column;
 }

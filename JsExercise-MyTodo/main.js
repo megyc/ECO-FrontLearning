@@ -105,7 +105,7 @@ function renderTodoList(todoLists){
     let parent=lists.parentNode;
     parent.removeChild(lists);
     lists=document.createElement("div");
-    lists.className="lables-container";
+    lists.className="item-container";
     lists.id="lables";
     parent.appendChild(lists);
     todoLists.forEach(function(item){
@@ -128,7 +128,7 @@ function renderTodoItem(item){
         //添加名字的监听
         item_name.onclick=state_change;
 
-        item_container.className="lable-div";
+        item_container.className="item-div";
         item_container.id=item.id;
 
         //向item里添加三个容器
@@ -141,11 +141,11 @@ function renderTodoItem(item){
         delete_button.className="delete-button-style";
         delete_button.innerHTML="删除";
         if(item.state==='FINISHED'){
-            item_name.className="finished-lable";//已完成的lable
+            item_name.className="finished-item";//已完成的lable
             item_state.innerHTML="已完成";
         }
         else{
-            item_name.className="unfinished-lable";//未完成的lable
+            item_name.className="unfinished-item";//未完成的lable
             item_state.innerHTML="未完成";
         }
         return item_container;
