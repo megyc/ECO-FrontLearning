@@ -20,8 +20,8 @@ class TodoItem{
     constructor(name){
         this.name=name;
         this.state='UNFINISHED';
-        this.id=new Date().getTime;//唯一的时间戳作为id
-        this.seen=ture;//用seen标记该item是否展示
+        this.id= new Date().getTime();//唯一的时间戳作为id
+        this.seen=true;//用seen标记该item是否展示
     }
 }
 
@@ -35,11 +35,12 @@ function lable_add(){
     if(document.getElementById("input").value!==""){
         let new_lable=new lable(document.getElementById("input").value);
         lables.push(new_lable);
-        print(lables.length-1);
+       // print(lables.length-1);
         stack.push(lables.length-1);
         //新版
         NewItem=new TodoItem(document.getElementById("input").value);
         items.push(NewItem);
+        renderTodoList(items);
     }
     else
         alert("请输入内容");
@@ -97,120 +98,118 @@ function print(num){
     }
 }
 
-function lable_delete(e){
-    //找到事件源的lable
-    let lable=e.target.parentNode;
-    //获取该标签的id并从lables内移除（会导致数组该lables以后的所有项下标-1）
-    let number=lable.id.replace("lable_div","");//从唯一的标识中获取下标
-    lables.splice(number,1);
-    let pos=stack.indexOf(Number(number));//找到该元素在stack的位置//发现bug的原因：数组的indexof并不会自动把string转为number
-    stack.splice(pos,1);
-    for(let i=pos;i<stack.length;i++){//在lables内的序号-1
-        stack[i]--;
+function item_delete(e){
+    let item=e.target.parentNode;
+    id=Number(item.id);
+    for(let i=0;i<items.length;i++){
+        if(items[i].id===id){
+            items.splice(i,1);
+        }
     }
-    //为保持lable-div与其在lables中的一致性，只好全部重新打印
-    //删除整个lablescontainer
-    let parent=lable.parentNode.parentNode;
-    parent.removeChild(lable.parentNode);
-    //重建lablescontainer
-    let big_div=document.getElementById("big-container");
-    let new_container=document.createElement("div");
-    big_div.appendChild(new_container);
-    new_container.className="lables-container";
-    new_container.id="lables";
-    //全部重新打印会影响当前的分页状态
-    for(let i=0;i<lables.length;i++){
-        if(stack.indexOf(i)!==-1)
-        print(i);
-    }
+    renderTodoList(items);
 }
 
 function state_change(e){
     //寻找事件源
     let text=e.target.parentNode;
     
-    let num=text.id.replace("lable_div","");
-    //修改lables内的状态
-    lables[num].state=!lables[num].state;
-    //重新打印
-    //为保持lable-div与其在lables中的一致性，只好全部重新打印
-    //删除整个lablescontainer
-    let parent=text.parentNode.parentNode;
-    parent.removeChild(text.parentNode);
-    //重建lablescontainer
-    let big_div=document.getElementById("big-container");
-    let new_container=document.createElement("div");
-    big_div.appendChild(new_container);
-    new_container.className="lables-container";
-    new_container.id="lables";
-    //全部重新打印会影响当前的分页状态
-    for(let i=0;i<lables.length;i++){
-        if(stack.indexOf(i)!==-1)
-            print(i);
+    let num=Number(text.id);
+
+    //修改items内的状态
+    for(let i=0;i<items.length;i++){
+        if(items[i].id===num){
+            if(items[i].state==='UNFINISHED'){
+                items[i].state='FINISHED';
+            }
+            else{
+                items[i].state='UNFINISHED';
+            }
+        }
     }
+    renderTodoList(items);
 }
 
 function show_all(){
-    //全部删除，全部重新打印
-    let child=document.getElementById("lables");
-    let parent=document.getElementById("big-container");
-    parent.removeChild(child);
-    //重建lablescontainer
-    let big_div=document.getElementById("big-container");
-    let new_container=document.createElement("div");
-    big_div.appendChild(new_container);
-    new_container.className="lables-container";
-    new_container.id="lables";
-    for(let i=0;i<lables.length;i++){
-        stack.push(i);
-        print(i);
-    }
+    items.forEach(function(item){
+        item.seen=true;
+    });
+    renderTodoList(items);
 }
 
 function show_finished(){
-    stack.length=0;
-    //全部删除，全部重新打印
-    let child=document.getElementById("lables");
-    let parent=document.getElementById("big-container");
-    parent.removeChild(child);
-    //重建lablescontainer
-    let big_div=document.getElementById("big-container");
-    let new_container=document.createElement("div");
-    big_div.appendChild(new_container);
-    new_container.className="lables-container";
-    new_container.id="lables";
-    //筛选
-    let i=0;
-    do{
-        if(lables[i].state){
-            stack.push(i);
-            print(i);
+    items.forEach(function(item){
+        if(item.state==='FINISHED'){
+            item.seen=true;
         }
-        i++;
-    }while(i<lables.length)
+        else{
+            item.seen=false;
+        }
+    });
+    renderTodoList(items);
 }
 
 function show_unfinished(){
-    stack.length=0;
-    //全部删除，全部重新打印
-    let child=document.getElementById("lables");
-    let parent=document.getElementById("big-container");
-    parent.removeChild(child);
-    //重建lablescontainer
-    let big_div=document.getElementById("big-container");
-    let new_container=document.createElement("div");
-    big_div.appendChild(new_container);
-    new_container.className="lables-container";
-    new_container.id="lables";
-    //筛选
-    let i=0;
-    do{
-        if(!lables[i].state){
-            stack.push(i);
-            print(i);
+    items.forEach(function(item){
+        if(item.state==='UNFINISHED'){
+            item.seen=true;
         }
-        i++;
-    }while(i<lables.length)
-
+        else{
+            item.seen=false;
+        }
+    });
+    renderTodoList(items);
 }
 
+function renderTodoList(todoLists){
+    let lists=document.getElementById("lables");//获取item的容器
+    let parent=lists.parentNode;
+    parent.removeChild(lists);
+    lists=document.createElement("div");
+    lists.className="lables-container";
+    lists.id="lables";
+    parent.appendChild(lists);
+    todoLists.forEach(function(item){
+        let node=renderTodoItem(item);
+        if(node!==null){
+            lists.appendChild(node);
+        }
+    }); 
+}
+
+function renderTodoItem(item){
+    if(item.seen===true){
+        /*创建部分*/
+        item_container=document.createElement("div");//存放一条item
+        item_name=document.createElement("div");//存放单个item的名字
+        item_state=document.createElement("div");//存放单个item的状态
+        delete_button=document.createElement("button")//存放删除按钮
+        //添加每一个item内button的监听
+        delete_button.onclick=item_delete;
+        //添加名字的监听
+        item_name.onclick=state_change;
+
+        item_container.className="lable-div";
+        item_container.id=item.id;
+
+        //向item里添加三个容器
+        item_container.appendChild(item_name);
+        item_container.appendChild(item_state);
+        item_container.appendChild(delete_button);
+        //设置容器的内容
+        item_name.innerHTML=item.name;
+        item_state.className="state-style";
+        delete_button.className="delete-button-style";
+        delete_button.innerHTML="删除";
+        if(item.state==='FINISHED'){
+            item_name.className="finished-lable";//已完成的lable
+            item_state.innerHTML="已完成";
+        }
+        else{
+            item_name.className="unfinished-lable";//未完成的lable
+            item_state.innerHTML="未完成";
+        }
+        return item_container;
+        }
+    else
+        return null;
+}
