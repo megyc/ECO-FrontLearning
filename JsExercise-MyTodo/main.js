@@ -10,9 +10,6 @@ unfinished_button.onclick=show_unfinished;
 finished_button.onclick=show_finished;
 textarea.onclick=clear;
 
-let lables=[];//类数组，存放数据
-let stack=[];//用于储存当前页面有哪些lable
-
 let items=[];//存放items
 
 //新版items类
@@ -25,18 +22,8 @@ class TodoItem{
     }
 }
 
-//标签的构造函数
-function lable(name){
-    this.name=name;
-    this.state=false;
-}
-
 function lable_add(){
     if(document.getElementById("input").value!==""){
-        let new_lable=new lable(document.getElementById("input").value);
-        lables.push(new_lable);
-       // print(lables.length-1);
-        stack.push(lables.length-1);
         //新版
         NewItem=new TodoItem(document.getElementById("input").value);
         items.push(NewItem);
@@ -49,53 +36,6 @@ function lable_add(){
 function clear(){
     let text=document.getElementById("input");
     text.value="";
-}
-
-function print(num){
-
-    /*创建部分*/
-    let lable_container=document.getElementById("lables");//获取lable容器
-    let lable_div=document.createElement("div");//存放一条lable
-    lable_div.id="lable_div"+num;//给该lable唯一的编号（希望该编号可以对应数组中的编号，方便操作）
-    let lable_name=document.createElement("div");//存放单个lable的名字
-    let lable_state=document.createElement("div");//存放单个lable的状态
-    let delete_button=document.createElement("button")//存放删除按钮
-
-    //添加每一个lable内button的监听
-    delete_button.onclick=lable_delete;
-    //添加名字的监听
-    lable_name.onclick=state_change;
-
-
-    /*
-    这一条貌似没有用
-    delete_button.id="delete_button"+lable_num;//给该按钮一个唯一的编号
-    */
-
-    lable_container.appendChild(lable_div);//向lable容器里添加一条lable
-    lable_div.className="lable-div";//采用flex布局
-
-    //向div里添加三个容器
-    lable_div.appendChild(lable_name);
-    lable_div.appendChild(lable_state);
-    lable_div.appendChild(delete_button);
-
-
-
-    /*内容设置部分 */
-    //设置容器的内容
-    lable_name.innerHTML=lables[num].name;
-    lable_state.className="state-style";
-    delete_button.className="delete-button-style";
-    delete_button.innerHTML="删除";
-    if(lables[num].state){
-        lable_name.className="finished-lable";//已完成的lable
-        lable_state.innerHTML="已完成";
-    }
-    else{
-        lable_name.className="unfinished-lable";//未完成的lable
-        lable_state.innerHTML="未完成";
-    }
 }
 
 function item_delete(e){
