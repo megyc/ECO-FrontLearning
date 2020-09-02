@@ -13,6 +13,18 @@ textarea.onclick=clear;
 let lables=[];//类数组，存放数据
 let stack=[];//用于储存当前页面有哪些lable
 
+let items=[];//存放items
+
+//新版items类
+class TodoItem{
+    constructor(name){
+        this.name=name;
+        this.state='UNFINISHED';
+        this.id=new Date().getTime;//唯一的时间戳作为id
+        this.seen=ture;//用seen标记该item是否展示
+    }
+}
+
 //标签的构造函数
 function lable(name){
     this.name=name;
@@ -25,7 +37,9 @@ function lable_add(){
         lables.push(new_lable);
         print(lables.length-1);
         stack.push(lables.length-1);
-
+        //新版
+        NewItem=new TodoItem(document.getElementById("input").value);
+        items.push(NewItem);
     }
     else
         alert("请输入内容");
@@ -199,3 +213,4 @@ function show_unfinished(){
     }while(i<lables.length)
 
 }
+
