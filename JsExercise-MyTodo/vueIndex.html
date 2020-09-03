@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Todo with React(Vue版)</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="Vue.js"></script>
+  </head>
+  <body>
+    <h1 class="title">My Todo with React</h1>
+    <div id="app">
+        <div>
+            <input v-model="message" type="text" class="text" placeholder="TODO">
+            <button v-on:click="submit" id="add-button"  class="button-style" type="button">添加</button>
+        </div>
+        <div id="big-container" class="item-container">
+            <div v-for="item in items" :key="item.id">
+                <div v-if="item.seen">
+                    <div class="item-div" v-bind:id="item.id">
+                        <template v-if="item.state==='UNFINISHED'"><!--这里运用class和style的动态绑定会更好，目前先这样，后续再更改-->
+                            <div class="unfinished-item">{{item.name}}</div>
+                            <div class="state-style">未完成</div>
+                        </template>
+                        <template v-else>
+                            <div class="finished-item">{{item.name}}</div>
+                            <div class="state-style">已完成</div>
+                        </template>
+                        <button class="delete-button-style" v-on:click="remove($event)">删除</button>
+                    </div>
+                </div>
+            </div>
+        <div class="item-container" id="items"></div></div>
+        <h2 class="sub-tittle">show</h2>
+        <button class="button-style" id="all-button">全部</button><button class="button-style" id="unfinished-button">还未完成</button><button class="button-style" id="finished-button">已完成</button>
+    </div>  
+    <script src="vueMain.js"></script>
+  </body>
+</html>
