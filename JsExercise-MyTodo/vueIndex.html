@@ -18,11 +18,11 @@
                 <div v-if="item.seen">
                     <div class="item-div" v-bind:id="item.id">
                         <template v-if="item.state==='UNFINISHED'"><!--这里运用class和style的动态绑定会更好，目前先这样，后续再更改-->
-                            <div class="unfinished-item">{{item.name}}</div>
+                            <div class="unfinished-item" v-on:click="stateChange($event)">{{item.name}}</div>
                             <div class="state-style">未完成</div>
                         </template>
                         <template v-else>
-                            <div class="finished-item">{{item.name}}</div>
+                            <div class="finished-item" v-on:click="stateChange($event)">{{item.name}}</div>
                             <div class="state-style">已完成</div>
                         </template>
                         <button class="delete-button-style" v-on:click="remove($event)">删除</button>
@@ -31,7 +31,9 @@
             </div>
         <div class="item-container" id="items"></div></div>
         <h2 class="sub-tittle">show</h2>
-        <button class="button-style" id="all-button">全部</button><button class="button-style" id="unfinished-button">还未完成</button><button class="button-style" id="finished-button">已完成</button>
+        <button class="button-style" id="all-button" v-on:click="showAll()">全部</button>
+        <button class="button-style" id="unfinished-button" v-on:click="showUnfinished()">还未完成</button>
+        <button class="button-style" id="finished-button" v-on:click="showFinished()">已完成</button>
     </div>  
     <script src="vueMain.js"></script>
   </body>

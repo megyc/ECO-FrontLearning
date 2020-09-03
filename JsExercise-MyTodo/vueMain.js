@@ -24,12 +24,34 @@ let vm = new Vue({
         },
         remove:function(e){
             let id=Number(e.target.parentNode.id);
-            console.info(id);
             this.items.forEach(function(item,index) {
                 if(item.id===id){
-                    items.splice(index,1);
+                    vm.items.splice(index,1);
                 }
             });
+        },
+        stateChange:function(e){
+            const id=Number(e.target.parentNode.id);
+            this.items.forEach(item=>{
+                if(item.id===id){
+                    item.state=item.state==="FINISHED"?"UNFINISHED":"FINISHED";
+                }
+            })
+        },
+        showAll:function(){
+            this.items.forEach(item=>{
+                item.seen=true;
+            })
+        },
+        showFinished:function(){
+            this.items.forEach(item=>{
+                item.seen=item.state==='FINISHED';
+            })
+        },
+        showUnfinished:function(){
+            this.items.forEach(item=>{
+                item.seen=item.state==='UNFINISHED';
+            })
         }
     }
 })
