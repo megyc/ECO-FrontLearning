@@ -103,23 +103,27 @@ function show_unfinished(){
 function renderTodoList(todoLists){
     let lists=document.getElementById("lables");//获取item的容器
     let parent=lists.parentNode;
+    const fragment=document.createDocumentFragment();
     parent.removeChild(lists);
     lists=document.createElement("div");
     lists.className="item-container";
     lists.id="lables";
-    parent.appendChild(lists);
+    fragment.appendChild(lists);
     todoLists.forEach(function(item){
         let node=renderTodoItem(item);
         if(node!==null){
             lists.appendChild(node);
         }
     }); 
+    parent.appendChild(fragment);
 }
 
 function renderTodoItem(item){
     if(item.seen===true){
         /*创建部分*/
+        const fragment=document.createDocumentFragment();
         item_container=document.createElement("div");//存放一条item
+        fragment.appendChild(item_container);
         item_name=document.createElement("div");//存放单个item的名字
         item_state=document.createElement("div");//存放单个item的状态
         delete_button=document.createElement("button")//存放删除按钮
