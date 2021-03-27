@@ -1,4 +1,2 @@
 # ECO-FrontLearning
-大家好！
-我是前端小组的GYC
-请多多指教！
+ECO JPAN前端实习的练习仓库
